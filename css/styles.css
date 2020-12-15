@@ -1,0 +1,960 @@
+@font-face {
+    font-family: "ProductSans";
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url(../fonts/ProductSansRegular.ttf);
+}
+
+@font-face {
+    font-family: "ProductSansBold";
+    font-style: normal;
+    font-weight: 900;
+    font-display: auto;
+    src: url(../fonts/ProductSansBold.ttf);
+}
+
+body {
+    overflow: hidden;
+}
+
+body * {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'ProductSans', Arial, Helvetica, sans-serif;
+}
+
+b .b, .bold {
+    font-family: 'ProductSansBold', Arial, Helvetica, sans-serif;
+}
+
+/* 
+.map,
+.map * {
+    box-sizing: border-box;
+    -ms-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+} */
+
+.map {
+    clear: both;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.maps-container {
+    width: 100%;
+    height: 100vh;
+    /* padding-bottom: 40%; */
+    position: relative;
+    overflow: hidden !important;
+    background: #8AB4F8;
+    z-index: 3;
+    /* margin-top: 30px; */
+}
+
+.preloader {
+    display: flex;
+}
+
+.fullscreen, #classic_view>div {
+    width: 100vw;
+    height: 100vh;
+}
+
+.brand-name h1 {
+    position: relative;
+    font-family: 'ProductSansBold';
+    text-shadow: 0px 0px 4px #fff8;
+}
+
+.over-top {
+    position: fixed;
+    z-index: 99999;
+}
+
+.btn-holder {
+    right: 0px;
+}
+
+.maps-container-inner {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    height: 0;
+    padding-bottom: 50%;
+}
+
+.map-control {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.map-control-zoomin, .map-control-zoomout {
+    right: 0;
+    bottom: 0;
+}
+
+.map-control-zoomin {
+    bottom: 40px;
+}
+
+.map-control img {
+    object-fit: contain;
+}
+
+.map-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8AB4F8;
+    text-align: center;
+    margin: auto;
+    cursor: grab;
+}
+
+.map-image svg, .map-image img {
+    display: block;
+    width: 50%;
+    margin: auto;
+    /* height: 100%; */
+    /* max-width: 200px; */
+}
+
+.marker-all.vector img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    object-position: center;
+    transform-origin: center;
+    transition-duration: 300ms;
+}
+
+.marker-all.vector:hover img {
+    transform: scale(1.2);
+}
+
+.marker-all {
+    position: absolute;
+    display: inline-block;
+    z-index: 20;
+    /* margin-left: -0.4%;
+    margin-bottom: -0.1%;
+    max-width: 100px;
+    max-height: 100px; */
+}
+
+.marker-all.city {
+    transform-origin: 0px 12px;
+    -moz-transform-origin: 0px 12px;
+    -webkit-transform-origin: 0px 12px;
+    -ms-transform-origin: 0px 12px;
+}
+
+.marker-all.state, .marker-all.vector {
+    z-index: 19;
+    text-align: center;
+    transform-origin: center center;
+    -moz-transform-origin: center center;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+}
+
+.maps-zoomed-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transform-origin: 0 0;
+    left: 0;
+    top: 0;
+}
+
+.marker-all:hover {
+    z-index: 25;
+}
+
+.marker-all a {
+    /* width: 160px; */
+    /* height: 240px; */
+    display: block;
+    position: absolute;
+    color: #fff;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    /* left: 0px; */
+}
+
+.marker-all a:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: url(../images/marker.svg) left center no-repeat;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    left: -6px;
+    top: 6px;
+}
+
+.marker-all span {
+    /* width: auto;
+    height: auto; */
+    display: none;
+    z-index: 27;
+    /* padding: 10px; */
+    /* font-size: 120px; */
+    /* font-weight: 900; */
+    /* margin-top: 190px; */
+}
+
+.marker-all:hover span {
+    display: block;
+}
+
+.marker-group span {
+    display: block;
+}
+
+.marker-all h4 {
+    /* display: none; */
+    z-index: 27;
+    /* width: auto;
+    height: auto;
+    padding: 10px; */
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-family: 'ProductSansBold', Arial, Helvetica, sans-serif;
+    /* margin-top: 190px; */
+    color: #808080;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+}
+
+.marker-all:hover h4 {
+    display: block;
+    color: #337ab7;
+}
+
+.marker-group a {
+    display: block;
+    position: absolute;
+    z-index: 21;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1, 1);
+}
+
+/* .marker-group a { */
+
+/* -moz-opacity: 0.50;
+    -khtml-opacity: 0.50;
+    opacity: 0.50;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=50);
+    filter: alpha(opacity=50); */
+
+/* } */
+
+.marker-group a.disabled:hover {
+    cursor: not-allowed;
+    color: #fff;
+}
+
+.marker-group a:hover {
+    color: #8cc1f0;
+    text-decoration: none;
+    /* -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=100);
+    filter: alpha(opacity=100); */
+}
+
+.visible-at-1 {
+    display: block;
+}
+
+.hide-at-1, .visible-at-2, .visible-at-3, .visible-at-4, .visible-at-5, .visible-at-6, .visible-at-7, .visible-at-8, .visible-at-9, .visible-at-10, .visible-at-11, .visible-at-12, .visible-at-13, .visible-at-14, .visible-at-15 {
+    display: none;
+}
+
+/********************************************************************/
+
+#group-marker-Kashmir {
+    left: 36%;
+    bottom: 92%;
+}
+
+#group-marker-Pradesh {
+    left: 37%;
+    bottom: 82%;
+}
+
+#group-marker-Uttarakhand {
+    left: 41.5%;
+    bottom: 73%;
+}
+
+#group-marker-Punjab {
+    left: 36.2%;
+    bottom: 75%;
+}
+
+#group-marker-Rajasthan {
+    left: 29%;
+    bottom: 58%;
+}
+
+#group-marker-gujarat {
+    left: 28%;
+    bottom: 44%;
+}
+
+#group-marker-Madhya {
+    left: 40%;
+    bottom: 47%;
+}
+
+#group-marker-Uttar {
+    left: 46%;
+    bottom: 58%;
+}
+
+#group-marker-Bihar {
+    left: 54%;
+    bottom: 53%;
+}
+
+#group-marker-Jharkhand {
+    left: 54%;
+    bottom: 46%;
+}
+
+#group-marker-Sikkim {
+    left: 60%;
+    bottom: 59%;
+}
+
+#group-marker-Meghalaya {
+    left: 63%;
+    bottom: 54%;
+}
+
+#group-marker-Tripura {
+    left: 65.5%;
+    bottom: 44.5%;
+}
+
+#group-marker-Mizoram {
+    left: 67.5%;
+    bottom: 40%;
+}
+
+#group-marker-assam {
+    left: 68%;
+    bottom: 58%;
+}
+
+#group-marker-Manipur {
+    left: 68.5%;
+    bottom: 47.5%;
+}
+
+#group-marker-Nagaland {
+    left: 69.7%;
+    bottom: 52%;
+}
+
+#group-marker-Arunachal {
+    left: 70%;
+    bottom: 63%;
+}
+
+#group-marker-Bengal {
+    left: 60%;
+    bottom: 42%;
+}
+
+#group-marker-Odisha {
+    left: 51%;
+    bottom: 40%;
+}
+
+#group-marker-Maharashtra {
+    left: 36%;
+    bottom: 31%;
+}
+
+#group-marker-Karnataka {
+    left: 37%;
+    bottom: 18%;
+}
+
+#group-marker-Tamil {
+    left: 42%;
+    bottom: 3%;
+}
+
+#group-marker-Kerala {
+    left: 39%;
+    bottom: -2%;
+}
+
+#group-marker-Telangana {
+    left: 43%;
+    bottom: 28%;
+}
+
+#group-marker-andhra {
+    left: 45%;
+    bottom: 21%;
+}
+
+#group-marker-Chhattisgarh {
+    left: 49%;
+    bottom: 32%;
+}
+
+#group-marker-Ahemdabad {
+    left: 30%;
+    bottom: 40%;
+}
+
+#group-marker-Surat {
+    left: 33.5%;
+    bottom: 34%;
+}
+
+#group-marker-Mumbai {
+    left: 33.8%;
+    bottom: 28%;
+}
+
+#group-marker-Pune {
+    left: 37.8%;
+    bottom: 25%;
+}
+
+#group-marker-goa {
+    left: 34.5%;
+    bottom: 20%;
+}
+
+#group-marker-Mysuru {
+    left: 36.5%;
+    bottom: 13%;
+}
+
+#group-marker-Kochi {
+    left: 37%;
+    bottom: 6%;
+}
+
+#group-marker-Chennai {
+    left: 45%;
+    bottom: 13%;
+}
+
+#c4 {
+    left: 35%;
+    bottom: 85%;
+}
+
+#c4-1 {
+    left: 39%;
+    bottom: 85%;
+}
+
+#c4-2 {
+    left: 35%;
+    bottom: 92%;
+}
+
+#c2 {
+    left: 65%;
+    bottom: 54%;
+}
+
+#c2-1 {
+    left: 71%;
+    bottom: 63%;
+}
+
+#c5 {
+    left: 36%;
+    bottom: 70%;
+}
+
+#group-marker-delhi {
+    left: 38%;
+    bottom: 67%;
+}
+
+#grass2 {
+    left: 32%;
+    bottom: 47%;
+}
+
+#grass3 {
+    left: 37%;
+    bottom: 31%;
+}
+
+#grass5 {
+    left: 43%;
+    bottom: 37%;
+}
+
+#taj {
+    left: 41.8%;
+    bottom: 61.2%;
+}
+
+#h2 {
+    left: 31%;
+    bottom: 51%;
+}
+
+#treee1 {
+    left: 29%;
+    bottom: 53%;
+}
+
+#treee2 {
+    left: 30%;
+    bottom: 47%;
+}
+
+#tree16 {
+    left: 46%;
+    bottom: 52%;
+}
+
+#tree17 {
+    left: 47%;
+    bottom: 51.5%;
+}
+
+#tree18 {
+    left: 48%;
+    bottom: 50%;
+}
+
+#tree19 {
+    left: 52.5%;
+    bottom: 53%;
+}
+
+#tree20 {
+    left: 49%;
+    bottom: 48%;
+}
+
+#tree21 {
+    left: 50%;
+    bottom: 46%;
+}
+
+#tree22 {
+    left: 51%;
+    bottom: 48%;
+}
+
+#tree23 {
+    left: 52%;
+    bottom: 45%;
+}
+
+#tree24 {
+    left: 52%;
+    bottom: 42%;
+}
+
+#tree25 {
+    left: 56%;
+    bottom: 38%;
+}
+
+#tree26 {
+    left: 58%;
+    bottom: 41%;
+}
+
+#tree27 {
+    left: 42%;
+    bottom: 75%;
+}
+
+#tree28 {
+    left: 56%;
+    bottom: 34%;
+}
+
+#tree29 {
+    left: 50%;
+    bottom: 25%;
+}
+
+#tree30 {
+    left: 44%;
+    bottom: 58%;
+}
+
+#tree31 {
+    left: 39%;
+    bottom: 60%;
+}
+
+#tree32 {
+    left: 46%;
+    bottom: 62%;
+}
+
+#tree33 {
+    left: 44%;
+    bottom: 65%;
+}
+
+#tree34 {
+    left: 43%;
+    bottom: 68%;
+}
+
+#tree35 {
+    left: 43%;
+    bottom: 57%;
+}
+
+#tree36 {
+    left: 42%;
+    bottom: 58%;
+}
+
+#tree37 {
+    left: 40%;
+    bottom: 57%;
+}
+
+#tree38 {
+    left: 38%;
+    bottom: 55%;
+}
+
+#tree39 {
+    left: 68%;
+    bottom: 62%;
+}
+
+#tree40 {
+    left: 67%;
+    bottom: 46%;
+}
+
+#dog {
+    left: 49.5%;
+    bottom: 52%;
+}
+
+#tr1 {
+    left: 42%;
+    bottom: 15%;
+}
+
+#tr2 {
+    left: 44%;
+    bottom: 13%;
+}
+
+#tr3 {
+    left: 43%;
+    bottom: 8%;
+}
+
+#tr4 {
+    left: 44%;
+    bottom: 4%;
+}
+
+#tr5 {
+    left: 42%;
+    bottom: -4%;
+}
+
+#tr6 {
+    left: 40%;
+    bottom: -2%;
+}
+
+#tr7 {
+    left: 40%;
+    bottom: 5%;
+}
+
+#tr8 {
+    left: 38%;
+    bottom: 3%;
+}
+
+#tr9 {
+    left: 35.5%;
+    bottom: 36%;
+}
+
+#tr10 {
+    left: 33%;
+    bottom: 23%;
+}
+
+#tr11 {
+    left: 34%;
+    bottom: 42%;
+}
+
+#ele1 {
+    left: 40%;
+    bottom: -7%;
+}
+
+#user1 {
+    left: 47%;
+    bottom: 40%;
+}
+
+#user3 {
+    left: 56%;
+    bottom: 53%;
+}
+
+#ww1 {
+    left: 38%;
+    bottom: 42.5%;
+}
+
+#ww3 {
+    left: 38%;
+    bottom: 42.5%;
+}
+
+#camel {
+    left: 33%;
+    bottom: 62%;
+}
+
+#camel1 {
+    left: 35%;
+    bottom: 55%;
+}
+
+#horse {
+    left: 37%;
+    bottom: 18%;
+}
+
+#group-marker-bengaluru {
+    left: 41%;
+    bottom: 13%;
+}
+
+/***************************
+* SCROLLBARS
+***************************/
+
+.scrollbar, .scrollbar .up, .scrollbar .down, .scrollbar .left, .scrollbar .right, .vertical-scrollbar .track .horizontal-scrollbar .track, .scrollbar .track .dragBar {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 0;
+    outline: none;
+}
+
+.scrollbar {
+    position: absolute;
+    background: #fff;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -moz-opacity: 0.50;
+    -khtml-opacity: 0.50;
+    opacity: 0.50;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=50);
+    filter: alpha(opacity=50);
+}
+
+.scrollbar:hover {
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=100);
+    filter: alpha(opacity=100);
+}
+
+.vertical-scrollbar {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    height: auto;
+}
+
+.vertical-scrollbar:hover {
+    width: 20px;
+}
+
+.vertical-scrollbar.visible {
+    visibility: visible;
+}
+
+.horizontal-scrollbar {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 15px;
+}
+
+.horizontal-scrollbar:hover {
+    height: 20px;
+}
+
+.horizontal-scrollbar.visible {
+    visibility: visible;
+}
+
+.scrollbar .up, .scrollbar .down, .scrollbar .left, .scrollbar .right {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: #e6e6e6;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+.scrollbar .up:hover, .scrollbar .down:hover, .scrollbar .left:hover, .scrollbar .right:hover, .scrollbar .track .dragBar:hover {
+    background-color: #3a9d82;
+}
+
+.scrollbar .up {
+    left: 0;
+    top: 0;
+    background-image: url("../images/icons/scrollbar-arrow-up.svg");
+    background-position: center center;
+    width: 100%;
+}
+
+.scrollbar .down {
+    left: 0;
+    bottom: 20px;
+    background-image: url("../images/icons/scrollbar-arrow-down.svg");
+    background-position: center center;
+    width: 100%;
+}
+
+.scrollbar .left {
+    left: 0;
+    bottom: 0;
+    background-image: url("../images/icons/scrollbar-arrow-left.svg");
+    background-position: center center;
+    height: 100%;
+}
+
+.scrollbar .right {
+    right: 20px;
+    bottom: 0;
+    background-image: url("../images/icons/scrollbar-arrow-right.svg");
+    background-position: center center;
+    height: 100%;
+}
+
+.vertical-scrollbar .track {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 20px;
+    bottom: 40px;
+    background: #f1f1f1;
+    overflow: hidden;
+}
+
+.horizontal-scrollbar .track {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 40px;
+    bottom: 0px;
+    background: #f8f8f8;
+    overflow: hidden;
+}
+
+.scrollbar .track .dragBar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #3a9d82;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.vertical-scrollbar .track .dragBar {
+    height: 33%;
+    top: 33%;
+    width: 100%;
+}
+
+.horizontal-scrollbar .track .dragBar {
+    width: 33%;
+    left: 33%;
+    height: 100%;
+}
+
+/***************************
+* RESPONSIVE STATES
+***************************/
+
+/* 
+@media screen and (max-width: 1300px) {
+  .maps-container {
+    height: 500px;
+    padding-bottom: 0;
+  }
+
+  .maps-container-inner {
+    height: 0;
+    padding-bottom: 32.5%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .maps-container {
+    width: 100%;
+    height: 484px;
+    padding-bottom: 0;
+    margin-top: 54px;
+  }
+
+  .map {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .maps-container {
+    height: 300px;
+  }
+} */

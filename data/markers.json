@@ -1,0 +1,232 @@
+{
+    "cities": [
+        {
+            "text": "New&nbsp;Delhi",
+            "visibleAt": 2,
+            "hideAt": 5,
+            "coord": {
+                "x": 40.35,
+                "y": 32.5
+            },
+            "active": false,
+            "link": "new-delhi"
+        },
+        {
+            "text": "Mumbai",
+            "visibleAt": 2,
+            "hideAt": 5,
+            "coord": {
+                "x": 33.1,
+                "y": 68.7
+            },
+            "active": true,
+            "link": "mumbai"
+        },
+        {
+            "text": "Bengaluru",
+            "visibleAt": 2,
+            "hideAt": 5,
+            "coord": {
+                "x": 41,
+                "y": 92
+            },
+            "active": false,
+            "link": "bengaluru"
+        },
+        {
+            "text": "Lucknow",
+            "visibleAt": 2,
+            "hideAt": 5,
+            "coord": {
+                "x": 47,
+                "y": 37
+            },
+            "active": false,
+            "link": "lucknow"
+        }
+    ],
+    "states": [
+        {
+            "text": "Gujrat",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 28.5,
+                "y": 55
+            },
+            "link": "gujrat"
+        },
+        {
+            "text": "Rajasthan",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 31,
+                "y": 42
+            },
+            "link": "rajasthan"
+        },
+        {
+            "text": "Maharastra",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 34.5,
+                "y": 67.2
+            },
+            "link": "maharastra"
+        },
+        {
+            "text": "Karnataka",
+            "visibleAt": 1,
+            "hideAt": 5,
+            "coord": {
+                "x": 33.8,
+                 "y": 84.9
+            },
+            "link": "karnataka"
+        },
+        {
+            "text": "Andhra<br/>Pradesh",
+            "visibleAt": 2,
+            "hideAt": 5,
+            "coord": {
+                "x": 40.4,
+                "y": 83.1
+            },
+            "link": "andhra-pardesh"
+        },
+        {
+            "text": "Kerala",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 37.3,
+                "y": 101
+            },
+            "link": "kerala"
+        },
+        {
+            "text": "Telangana",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 40,
+                "y": 73
+            },
+            "link": "telangana"
+        },
+        {
+            "text": "Jammu&nbsp;and<br />Kashmir",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 36,
+                "y": 8.2
+            },
+            "link": "j-n-k"
+        },
+        {
+            "text": "Uttar<br />Pradesh",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 44,
+                "y": 38
+            },
+            "link": "up"
+        },
+        {
+            "text": "Punjab",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 35.1,
+                "y": 24.8
+            },
+            "link": "punjab"
+        },
+        {
+            "text": "Odisha",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 50.5,
+                "y": 64
+            },
+            "link": "odisha"
+        },
+        {
+            "text": "Arunachal<br />Pradesh",
+            "visibleAt": 1,
+            "hideAt": 4,
+            "coord": {
+                "x": 67,
+                "y": 33
+            },
+            "link": "arunachal-pradesh"
+        }
+    ],
+    "vectors": [
+        {
+            "src": "./images/taj-mahal.svg",
+            "alt": "Taj Mahal",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 40.0,
+                "y": 36.1
+            }
+        },
+        {
+            "src": "./images/char-minar.png",
+            "alt": "Char Minar",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 40.2,
+                "y": 70.2
+            }
+        },
+        {
+            "src": "./images/lion.png",
+            "alt": "Asiatic Lions",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 28.5,
+                "y": 47.5
+            }
+        },
+        {
+            "src": "./images/camel.png",
+            "alt": "Pushkar Camel",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 33,
+                "y": 34
+            }
+        },
+        {
+            "src": "./images/camel.png",
+            "alt": "Pushkar Camel",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 31,
+                "y": 42
+            }
+        },
+        {
+            "src": "./images/gateway-of-india.png",
+            "alt": "Gateway of India",
+            "visibleAt": 4,
+            "hideAt": 9,
+            "coord": {
+                "x": 30.5,
+                "y": 65.3
+            }
+        }
+    ]
+}

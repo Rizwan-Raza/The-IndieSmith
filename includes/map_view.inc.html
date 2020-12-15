@@ -1,0 +1,78 @@
+<!-- Zoom area -->
+<div class="map">
+
+    <div class="maps-container unselectable" style="overflow: auto;">
+
+        <!-- Zoom Controls  -->
+        <button class="btn btn-light p-0 over-top map-control map-control-zoomin m-4">
+            <img src="images/zoom-in.svg" />
+        </button>
+        <button class="btn btn-light p-0 over-top map-control map-control-zoomout m-4">
+            <img src="images/zoom-out.svg" />
+        </button>
+
+
+        <!-- maps-container-inner -->
+        <div class="maps-container-inner zoomedElement zoomedElement414">
+            <!-- maps-zoomed-container -->
+            <div class="maps-zoomed-container">
+
+                <div class="map-image" id="map-all" style="display:block;">
+                    <img src="images/world.svg" alt="World map" />
+                </div>
+
+                <?php 
+                function getJson($filepath, $filter = null) {
+                    $string = file_get_contents($filepath);
+                    $json = json_decode($string, true);
+                    if($filter != null) {
+                        return $json[$filter];
+                    }
+                    return $json;
+                }
+                
+                $cities = array_filter(getJson("./data/markers.json", "cities"));
+                
+                foreach($cities as $city) { ?>
+                <div class="marker-all marker-group visible-at-<?=$city['visibleAt']?> hide-at-<?=$city['hideAt']?> city"
+                    style="top: <?=$city['coord']['y'];?>%; left: <?=$city['coord']['x']?>%;">
+                    <a href="<?=($city['active'] ? './'.$city['link']: 'javascript:;')?>"
+                        class="<?=($city['active'] ? 'enabled': 'disabled')?>">
+                        <span class="ml-2">
+                            <?=$city['text']?>
+                        </span>
+                    </a>
+                </div>
+                <?php } ?>
+
+                <?php
+                $states = array_filter(getJson("./data/markers.json", "states"));
+                
+                foreach($states as $state) { ?>
+
+                <div class="marker-all marker-group visible-at-<?=$state['visibleAt']?> hide-at-<?=$state['hideAt']?> state"
+                    style="top: <?=$state['coord']['y'];?>%; left: <?=$state['coord']['x']?>%;">
+                    <h4 class="text-uppercase">
+                        <?=$state['text']?>
+                    </h4>
+                </div>
+                <?php } ?>
+                <?php 
+                    $vectors = array_filter(getJson("./data/markers.json", "vectors")); 
+                    foreach($vectors as $vector) { ?>
+
+                <div class="marker-all visible-at-<?=$vector['visibleAt']?> hide-at-<?=$vector['hideAt']?> vector"
+                    style="top: <?=$vector['coord']['y'];?>%; left: <?=$vector['coord']['x']?>%;">
+                    <img src="<?=$vector['src']?>" alt="<?=$vector['alt']?>" title="<?=$vector['alt']?>">
+                </div>
+                <?php } ?>
+
+                <div class="testpoint"></div>
+            </div>
+            <!-- //maps-zoomed-container -->
+        </div>
+        <!-- //maps-container-inner -->
+    </div>
+</div>
+
+<!-- /Zomm area -->
